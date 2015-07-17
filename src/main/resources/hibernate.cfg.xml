@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+
+    <session-factory>
+       <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ForWebTools</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+        
+        
+        <mapping resource="edu/neu/webtoolFinal/model/Category.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/Disguess.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/Dish.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/Flavor.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/FlavorHasDish.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/Hot.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/Location.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/PictureForDish.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/Picture.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/PictureForUser.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/Role.hbm.xml"/>
+        <mapping resource="edu/neu/webtoolFinal/model/User.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

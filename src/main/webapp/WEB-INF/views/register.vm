@@ -1,0 +1,197 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Food.com login</title>
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+    html { height: 100% }
+    body { height: 100%; margin: 0; padding: 0 }
+    #map { height: 90%; width: 90% }
+
+
+
+</style>
+
+	<title>Move the Marker</title>
+	
+
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+
+
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<script>
+var nErr="";
+var pswErr="";
+var aErr="";
+var lErr="";
+
+function getLocation() {
+
+    if (navigator.geolocation) {
+    	
+        navigator.geolocation.getCurrentPosition(success);
+        document.getElementById("button1").value="Waiting...";
+      //  alert("a");
+    } else { 
+       alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function success(position) {
+	
+	var latlon = position.coords.latitude + "," + position.coords.longitude;
+	
+	var location=document.createElement("input");
+	
+ 	location.setAttribute("type", "hidden");
+	location.setAttribute("name", "location");
+	location.setAttribute("value", latlon);
+	document.getElementById("button1").appendChild(location);
+	alert(location.value);
+	document.getElementById("button1").value="Success!";
+
+	
+	 }
+
+
+</script>
+
+<script>
+function check()
+{ 
+
+   var name=document.getElementById("username").value;
+   var password=document.getElementById("password").value;
+   var repassword=document.getElementById("repassword").value;
+   var age=document.getElementById("age").value;
+   var location=document.getElementById("button1").value;
+   
+   if((""==name)||(null==name))
+	   {
+	   alert("Your name cannot be blank!");
+	   
+	   return false;
+	   }
+   if((""==password)||(null==password))
+   {
+	
+   alert("Your password cannot be blank!");
+   return false;
+   }
+   if(password!=repassword){
+   alert("Your password should be same!");
+   return false;	   
+	   
+   }
+   if(isNaN(age)){
+	 alert("Please enter a number!");
+	   return false;   
+   }
+   if(location!="Success!"){
+	   alert("Please wait...");
+	   return false;
+	   
+   }
+
+   
+  return true;
+   
+   
+   
+   
+   }
+
+
+</script>
+
+<style>
+
+.panel-custom > .panel-heading {
+  background-color:#FF6633;
+}
+.panel-custom > .panel-body {
+background:#FFF5F5;
+}
+
+
+
+
+</style>
+
+</head>
+<body>
+<div class="panel panel-custom">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><font color="#FFFFFF">Join in Food.com!  Finding Your Friend Here!      </font></div>
+
+  <!-- Table -->
+   <div class="panel-body">
+      <form method="post" action="createUser" onsubmit="return check()">
+      <table class="table">
+        <thead>
+            <tr><td><font color="#FF0000"></font></td><tr/>
+        </thead>
+        <tbody>
+          <tr>
+           
+            <td><font COLOR="#800517"><small>UserName: </small></font></td>
+            <td><input id="username" type="text" name="username" size="9"/><font color="#FF0000"><script>nErr</script></font></td>
+            
+          </tr>
+          <tr>
+          
+          <td><font COLOR="#800517"><small>Password:</small> </font></td>
+          <td><input id="password" type="password" name="password" size="9"/><font color="#FF0000"><script>pswErr</script></font></td>
+            
+          </tr>
+          <tr>
+          
+          <td><font COLOR="#800517"><small>Password(again!):</small> </font></td>
+          <td><input id="repassword" type="password" name="repassword" size="9"/><font color="#FF0000"><script>pswErr</script></font></td>
+            
+          </tr>
+          <tr>
+          <tr>
+          
+          <td><font COLOR="#800517"><small>Gender:</small> </font></td>
+          <td><font COLOR="#800517"><input type="radio" name="sex" value="male"><small>Male</small>  <input type="radio" name="sex" value="female"><small>Female</small></font></td>
+            
+          </tr>
+          <tr>
+          <tr>
+          
+          <td><font COLOR="#800517"><small>Age:</small> </font></td>
+          <td><input id="age" type="text" name="age" size="9"/><font color="#FF0000"><script>aErr</script></font></td>
+            
+          </tr>
+          <tr>
+          
+          <td><font COLOR="#800517"><small>Location:</small> </font></td>
+          <td><input id="button1" type="button" name="button" value="Get Location" class="btn btn-default" onclick="getLocation()"/><font color="#FF0000"><script>lErr</script></font></td>
+            
+          </tr>
+
+          <tr>
+       
+            <td><input  name="submit" type="submit" class="btn btn-default" value="Register"/></td>
+          </tr>
+        </tbody>
+      </table>
+      </form>
+</div>
+
+</div>
+
+
+</body>
+</html>
